@@ -3,12 +3,12 @@ from hangman import display_hangman
 from answers import answers
 
 
-def get_word():
+def get_word() -> str:
     word = random.choice(answers)
     return word.upper()
 
 
-def play(word):
+def before_play(word: str):
     word_completion = "_" * len(word)
     guessed = False
     guessed_letters = []
@@ -16,8 +16,11 @@ def play(word):
     tries = 6
     print("Let's play Hangman!")
     print(display_hangman(tries))
-    print(word_completion)
-    print("\n")
+    print(word_completion + "\n")
+    game(tries, guessed, guessed_letters, word, word_completion, guessed_words)
+
+
+def game(tries: int, guessed: bool, guessed_letters: list, word: str, word_completion: str, guessed_words: list):
     while not guessed and tries > 0:
         guess = input("Please guess a letter or word: ").upper()
         if len(guess) == 1 and guess.isalpha():
@@ -60,10 +63,10 @@ def play(word):
 
 def main():
     word = get_word()
-    play(word)
+    before_play(word)
     while input("Play Again? (Y/N) ").upper() == "Y":
         word = get_word()
-        play(word)
+        before_play(word)
 
 
 if __name__ == '__main__':
