@@ -7,4 +7,4 @@ WORD = 'skillfactory'
 
 @pytest.fixture()
 def get_answers():
-    main_app.get_word = WORD.upper()
+    main_app.WORD = WORD.upper()

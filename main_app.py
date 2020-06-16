@@ -8,6 +8,9 @@ def get_word() -> str:
     return word.upper()
 
 
+WORD = get_word()
+
+
 def before_play(word: str):
     word_completion = "_" * len(word)
     guessed = False
@@ -62,10 +65,10 @@ def game(tries: int, guessed: bool, guessed_letters: list, word: str, word_compl
 
 
 def main():
-    word = get_word()
+    word = WORD
     before_play(word)
     while input("Play Again? (Y/N) ").upper() == "Y":
-        word = get_word()
+        word = WORD
         before_play(word)
 
 
