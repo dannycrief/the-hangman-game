@@ -1,4 +1,6 @@
 import random
+from typing import Any
+
 from hangman import display_hangman
 from answers import answers
 
@@ -23,7 +25,7 @@ def before_play(word: str):
     game(tries, guessed, guessed_letters, word, word_completion, guessed_words)
 
 
-def game(tries: int, guessed: bool, guessed_letters: list, word: str, word_completion: str, guessed_words: list):
+def game(tries: int, guessed: bool, guessed_letters: list, word: str, word_completion: str, guessed_words: list) -> Any:
     while not guessed and tries > 0:
         guess = input("Please guess a letter or word: ").upper()
         if len(guess) == 1 and guess.isalpha():
@@ -62,6 +64,8 @@ def game(tries: int, guessed: bool, guessed_letters: list, word: str, word_compl
         print("Congrats, you guessed the word! You win!")
     else:
         print("Sorry, you ran out of tries. The word was " + word + ". Maybe next time!")
+
+    return guessed
 
 
 def main():
